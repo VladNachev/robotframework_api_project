@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.9.13 on win32)" generated="20230604 16:48:51.770" rpa="false" schemaversion="3">
+<suite id="s1" name="Tc02 Get Product Info" source="C:\Users\nache\PycharmProjects\training_robot\tests\products\tc02_get_product_info.robot">
+<test id="s1-t1" name="Do Get reqeust on a product" line="13">
+<kw name="Create session to the Web Service" library="common_get">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>fakeshop_session</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230604 16:48:51.954" level="INFO">Creating Session using : alias=fakeshop_session, url=https://fakestoreapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230604 16:48:51.953" endtime="20230604 16:48:51.954"/>
+</kw>
+<status status="PASS" starttime="20230604 16:48:51.953" endtime="20230604 16:48:51.955"/>
+</kw>
+<kw name="Do Get reqeust on a product ID" library="common_get">
+<var>${response}</var>
+<arg>${tc_path}</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>fakeshop_session</arg>
+<arg>${path_products_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230604 16:48:52.222" level="INFO">GET Request : url=https://fakestoreapi.com/products/2 
+ path_url=/products/2 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230604 16:48:52.222" level="INFO">GET Response : url=https://fakestoreapi.com/products/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 04 Jun 2023 13:48:54 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"239-bLDSJo+O3FjSlzUr879oE3z3US8"', 'X-Powered-By': 'Express', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=mE205vLtZf6De9gx0EvOwLaevFZfZVpE3Dbyqs5B5up4Zux2MqIDXzjb0UxiqR970zkrBoaVyRVDvYWhkEBLvF6C1os%2F1jAf9nFgEm66aeQ1mSlc0tFG9IoRrUFvSt1lG%2BXl"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7d20a2d9ba91313e-SOF', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":2,"title":"Mens Casual Premium Slim Fit T-Shirts ","price":22.3,"description":"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight &amp; soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.","category":"men's clothing","image":"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg","rating":{"rate":4.1,"count":259}} 
+ </msg>
+<status status="PASS" starttime="20230604 16:48:51.955" endtime="20230604 16:48:52.223"/>
+</kw>
+<msg timestamp="20230604 16:48:52.224" level="INFO">${response} = None</msg>
+<status status="PASS" starttime="20230604 16:48:51.955" endtime="20230604 16:48:52.224"/>
+</kw>
+<kw name="Check status as 200" library="common_get">
+<arg>${response}</arg>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230604 16:48:52.227" endtime="20230604 16:48:52.228"/>
+</kw>
+<status status="PASS" starttime="20230604 16:48:52.225" endtime="20230604 16:48:52.229"/>
+</kw>
+<kw name="Check keys' parameters in response body" library="common_get">
+<arg>${tc_path}</arg>
+<arg>${param_title}</arg>
+<arg>${param_category}</arg>
+<arg>${param_price}</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>fakeshop_session</arg>
+<arg>${tc_path}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230604 16:48:52.460" level="INFO">GET Request : url=https://fakestoreapi.com/products/2 
+ path_url=/products/2 
+ headers={'User-Agent': 'python-requests/2.30.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230604 16:48:52.461" level="INFO">GET Response : url=https://fakestoreapi.com/products/2 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 04 Jun 2023 13:48:55 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"239-bLDSJo+O3FjSlzUr879oE3z3US8"', 'X-Powered-By': 'Express', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=UHTy6wODV5X53A5KcHv8p2NhSofbA1fa1eeI1LdWkbcEyjvMX2RjgN6%2FNbkOjgPHwUklE7Nj2Lph8fNJshR1Q3R%2BcSIqwE16uDtRWCGpfmOEuF17Brl6qeF5kVAvzI2jC%2Byy"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7d20a2db4d46313e-SOF', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":2,"title":"Mens Casual Premium Slim Fit T-Shirts ","price":22.3,"description":"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight &amp; soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.","category":"men's clothing","image":"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg","rating":{"rate":4.1,"count":259}} 
+ </msg>
+<msg timestamp="20230604 16:48:52.461" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230604 16:48:52.233" endtime="20230604 16:48:52.461"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230604 16:48:52.464" level="INFO">{'id': 2, 'title': 'Mens Casual Premium Slim Fit T-Shirts ', 'price': 22.3, 'description': 'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight &amp; soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.', 'category': "men's clothing", 'image': 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg', 'rating': {'rate': 4.1, 'count': 259}}</msg>
+<status status="PASS" starttime="20230604 16:48:52.462" endtime="20230604 16:48:52.464"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()}[title]</arg>
+<arg>${param_title}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230604 16:48:52.464" endtime="20230604 16:48:52.465"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()}[category]</arg>
+<arg>${param_category}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230604 16:48:52.466" endtime="20230604 16:48:52.466"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response.json()}[price]</arg>
+<arg>${param_price}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230604 16:48:52.467" endtime="20230604 16:48:52.467"/>
+</kw>
+<status status="PASS" starttime="20230604 16:48:52.230" endtime="20230604 16:48:52.467"/>
+</kw>
+<doc>Running the GET a single product request
+in order to get info about the product.
+Validations: StatusCode as 200 and some
+of the expected keys' parameters in the
+reponse body.Keywords located in
+../../resources/common_get.resource</doc>
+<status status="PASS" starttime="20230604 16:48:51.952" endtime="20230604 16:48:52.468"/>
+</test>
+<status status="PASS" starttime="20230604 16:48:51.772" endtime="20230604 16:48:52.469"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tc02 Get Product Info">Tc02 Get Product Info</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
