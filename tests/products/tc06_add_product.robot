@@ -14,8 +14,9 @@ ${category}=  ${post_category}
 
 *** Test Cases ***
 Do a POST request to add a product
+    [Tags]  products
     [Documentation]     Running the "Add new product" request.
-    ...                 Validations of returned StatusCode as 200
+    ...                 Validation of returned StatusCode as 200
     ...                 and check if the parameters are mapped correctly.
     ...                 Keywords located in ../../resources/common_post.resource
 

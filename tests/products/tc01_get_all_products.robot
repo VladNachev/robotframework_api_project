@@ -11,6 +11,7 @@ ${tc_path}=  ${path_products}
 
 *** Test Cases ***
 Do a GET all products request
+    [Tags]  products
     [Documentation]     Running the GET all products request
     ...                 in order to get information about all
     ...                 the product. Validation includes:
@@ -22,4 +23,5 @@ Do a GET all products request
 
     Create session to the Web Service
     ${response}=  Do GET request on all products  ${tc_path}
+    Check Status as 200  ${response}
     Check keys in repsonse body  ${tc_path}  ${key_id}  ${key_title}  ${key_price}  ${key_category}  ${key_description}  ${key_image}

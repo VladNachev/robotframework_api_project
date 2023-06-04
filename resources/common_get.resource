@@ -38,3 +38,34 @@ Check keys' parameters in response body
     Should Be Equal    ${response.json()}[title]    ${param_title}
     Should Be Equal    ${response.json()}[category]    ${param_category}
     Should Be Equal    ${response.json()}[price]    ${param_price}
+
+Get request and limit the results
+    [Arguments]  ${tc_path}  ${param_limit}
+    ${response}=  GET On Session  fakeshop_session  ${tc_path}  ${param_limit}
+
+Check if "id": 4 exist and if "id": 5 doesn't
+    [Arguments]  ${tc_path}  ${param_limit}
+    ${response}=  GET On Session  fakeshop_session  ${tc_path}  ${param_limit}
+    ${body}=  Convert To String  ${response.content}
+    Should Contain  ${body}  "id":4
+    Should not Contain  ${body}  "id":5
+
+Check categories in response body
+    [Arguments]  ${tc_path}  ${tc_categ_1}  ${tc_categ_2}  ${tc_categ_3}  ${tc_categ_4}
+    ${response}=  GET On Session  fakeshop_session  ${tc_path}
+    ${body}=  Convert To String  ${response.content}
+    Should Contain  ${body}  ${tc_categ_1}
+    Should Contain  ${body}  ${tc_categ_2}
+    Should Contain  ${body}  ${tc_categ_3}
+    Should Contain  ${body}  ${tc_categ_4}
+
+Check content in jewelery
+    [Arguments]  ${tc_path}  ${tc_title_id_5}  ${tc_title_id_6}  ${tc_title_id_7}
+    ${response}=  GET On Session  fakeshop_session  ${tc_path}
+    ${body}=  Convert To String  ${response.content}
+    Should Contain  ${body}  ${tc_title_id_5}
+    Should Contain  ${body}  ${tc_title_id_6}
+    Should Contain  ${body}  ${tc_title_id_7}
+
+
+

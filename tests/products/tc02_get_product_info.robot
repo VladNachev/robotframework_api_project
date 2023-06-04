@@ -11,6 +11,7 @@ ${tc_path}=  ${path_products_id}
 
 *** Test Cases ***
 Do Get reqeust on a product
+    [Tags]  products
     [Documentation]     Running the GET a single product request
     ...                 in order to get info about the product.
     ...                 Validations: StatusCode as 200 and some
